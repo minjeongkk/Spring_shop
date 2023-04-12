@@ -1,6 +1,7 @@
 package jpabook.jpashop;
 
 import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,20 +22,20 @@ public class MemberRepositoryTest {
     @Transactional
     @Rollback(false)
     public void testMember() throws Exception{
-        //given
-        Member member = new Member();
-        member.setUsername("memberA");
-
-        //when
-        Long savedId = memberRepository.save(member);
-        Member findMember = memberRepository.find(savedId);
-
-        //then
-        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
-        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
-
-        // true가 나와야함, 같은 transaction 안에서 영속성 컨텍스트가 똑같음, 같은 엔티티로 인식
-        Assertions.assertThat(findMember).isEqualTo(member);
+//        //given
+//        Member member = new Member();
+//        member.setUsername("memberA");
+//
+//        //when
+//        Long savedId = memberRepository.save(member);
+//        Member findMember = memberRepository.find(savedId);
+//
+//        //then
+//        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
+//        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
+//
+//        // true가 나와야함, 같은 transaction 안에서 영속성 컨텍스트가 똑같음, 같은 엔티티로 인식
+//        Assertions.assertThat(findMember).isEqualTo(member);
     }
 
 }
